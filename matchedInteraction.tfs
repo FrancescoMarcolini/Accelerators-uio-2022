@@ -1,0 +1,59 @@
+@ NAME             %05s "TWISS"
+@ TYPE             %05s "TWISS"
+@ SEQUENCE         %11s "INTERACTION"
+@ PARTICLE         %08s "ELECTRON"
+@ MASS             %le       0.00051099895
+@ CHARGE           %le                  -1
+@ ENERGY           %le                 190
+@ PC               %le                 190
+@ GAMMA            %le         371820.7249
+@ KBUNCH           %le                   1
+@ BCURRENT         %le     1.015476683e-12
+@ SIGE             %le               0.001
+@ SIGT             %le                   1
+@ NPART            %le                   1
+@ EX               %le                   1
+@ EY               %le                   1
+@ ET               %le               0.001
+@ BV_FLAG          %le                   1
+@ LENGTH           %le                47.3
+@ ALFA             %le                   0
+@ ORBIT5           %le                  -0
+@ GAMMATR          %le                   0
+@ Q1               %le        0.2631601699
+@ Q2               %le        0.1711262064
+@ DQ1              %le                   0
+@ DQ2              %le                   0
+@ DXMAX            %le                   0
+@ DYMAX            %le                   0
+@ XCOMAX           %le                   0
+@ YCOMAX           %le                   0
+@ BETXMAX          %le         209129.4891
+@ BETYMAX          %le         582879.2319
+@ XCORMS           %le                   0
+@ YCORMS           %le                   0
+@ DXRMS            %le                   0
+@ DYRMS            %le                   0
+@ DELTAP           %le                   0
+@ SYNCH_1          %le                   0
+@ SYNCH_2          %le                   0
+@ SYNCH_3          %le                   0
+@ SYNCH_4          %le                   0
+@ SYNCH_5          %le                   0
+@ SYNCH_6          %le                   0
+@ SYNCH_8          %le                   0
+@ DQMIN            %le                   0
+@ DQMIN_PHASE      %le                   0
+@ TITLE            %08s "no-title"
+@ ORIGIN           %17s "5.08.00 Darwin 64"
+@ DATE             %08s "08/04/22"
+@ TIME             %08s "22.12.01"
+* NAME               KEYWORD                             S                  L               BETX               ALFX               BETY               ALFY 
+$ %s                 %s                                %le                %le                %le                %le                %le                %le 
+ "INTERACTION$START"  "MARKER"                             0                  0             168000               -810             137000               -653
+ "DRIFT_0"           "DRIFT"                             24                 24        209129.4891       -903.7287143        170136.7895        -727.699562
+ "QF1"               "QUADRUPOLE"                      29.6                5.6        139831.9359        11475.89185        263935.7331          -18327.44
+ "DRIFT_1"           "DRIFT"                           36.6                  7        25318.48308        4883.172828        582879.2319       -27235.91698
+ "QD0"               "QUADRUPOLE"                      41.3                4.7        4517.857769        753.0583843        360289.8199        60047.76247
+ "DRIFT_2"           "DRIFT"                           47.3                  6      0.00802207476     -0.08342652614    0.0001291478665       0.5408281557
+ "INTERACTION$END"   "MARKER"                          47.3                  0      0.00802207476     -0.08342652614    0.0001291478665       0.5408281557

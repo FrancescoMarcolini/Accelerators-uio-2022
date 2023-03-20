@@ -1,0 +1,98 @@
+
+Lf:=5.6;!m
+Ld=4.7;!m length of QD0
+Length=24+5.6+7+4.7+6;!m length of sequence
+f1=25;!m focal length of focusing quadrupole
+f0=40;!m focal length of defocusing quadrupole
+kf=1.1e-2;
+kd=-2.2e-2;
+!define the sequence that precedes interaction point
+interaction: SEQUENCE, L=Length, REFER=entry;
+QF1: QUADRUPOLE, AT=24, L:=Lf, K1:=kf;
+QD0: QUADRUPOLE, AT=24+5.6+7, L:=Ld, K1:=kd;
+ENDSEQUENCE;
+
+BEAM, PARTICLE=ELECTRON, ENERGY=190;!GeV for 380GeV collision energy
+USE, SEQUENCE=interaction;
+
+SELECT, FLAG=twiss, CLEAR;
+SELECT, FLAG=twiss, COLUMN=NAME,KEYWORD,S,L,BETX,ALFX,BETY,ALFY;
+
+TWISS,  FILE="interaction.tfs", BETX=168e3, BETY=137e3, ALFX=-810, ALFY=-653;
+
+PLOT, TABLE=twiss, Haxis=s, vaxis1=betx,bety, Interpolate=true, colour=100;
+PLOT, table=twiss, haxis=s, vaxis1=alfx,alfy, interpolate=true, colour=100;
+
+MATCH, SEQUENCE=interaction, betx=168e3, bety=137e3, alfx=-810, alfy=-653 ;
+CONSTRAINT, SEQUENCE=interaction, RANGE=interaction$end, betx=8e-3, bety=0.1e-3;
+VARY, name=kf, step=1.0e-6;
+VARY, name=kd, step=1.0e-6;
+lmdif, calls=500, tolerance=1.e-15;
+ENDMATCH;
+
+value, kf;
+value, kd;
+
+TWISS,  FILE="matchedInteraction.tfs", BETX=168e3, BETY=137e3, ALFX=-810, ALFY=-653;
+
+PLOT, TABLE=twiss, Haxis=s, vaxis1=betx,bety, Interpolate=true, colour=100;
+PLOT, table=twiss, haxis=s, vaxis1=alfx,alfy, interpolate=true, colour=100;
+
+! create a distribution, C values calculated in matlab
+N=2e4;
+i=0;
+cx11=6.376898762310242e-04;
+cx12=0;
+cx21=3.074576188971010e-06;
+cx22=3.795773072440436e-09;
+
+cy11=8.584379487788324e-05;
+cy12=0;
+cy21=4.091678690164800e-07;
+cy22=6.265970428945169e-10;
+/*
+sigmaPT=0; !if there is NO energy spread 
+! tracking module
+TRACK, FILE='trackingint.tfs', ONETABLE=true, DUMP=true;
+WHILE(i<N){
+    X1=GAUSS();
+    X2=GAUSS();
+    Y1=GAUSS();
+    Y2=GAUSS();
+START,
+X=cx11*X1,
+PX=cx21*X1+cx22*X2,
+Y=cy11*Y1,
+PY=cy21*Y1+cy22*Y2,
+T=0,
+PT=sigmaPT*GAUSS();
+
+i=i+1;
+}
+!OBSERVE, PLACE='INTERACTION$END';
+RUN, TURNS=1;
+ENDTRACK;
+*/
+! Now with energy spread
+
+sigmaPT=0.35/100; !if there is energy spread 
+! tracking module
+TRACK, FILE='spread.tfs', ONETABLE=true, DUMP=true;
+WHILE(i<N){
+    X1=GAUSS();
+    X2=GAUSS();
+    Y1=GAUSS();
+    Y2=GAUSS();
+START,
+X=cx11*X1,
+PX=cx21*X1+cx22*X2,
+Y=cy11*Y1,
+PY=cy21*Y1+cy22*Y2,
+T=0,
+PT=sigmaPT*GAUSS();
+
+i=i+1;
+}
+!OBSERVE, PLACE='INTERACTION$END';
+RUN, TURNS=1;
+ENDTRACK;
