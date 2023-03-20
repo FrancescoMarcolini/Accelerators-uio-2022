@@ -1,0 +1,20 @@
+! Making a simple sequence
+! K. Sjobak, Feb. 2022
+
+!Define some  elements (magnets)
+Q1F_1 : MULTIPOLE, KNL := {0, k*Lmagnet/2}; !Thin quadrupole
+Q2D_1 : QUADRUPOLE, L := Lmagnet, K1 := -k; !Thick quadrupole
+
+!Defining a sequence of all-new elements
+Lperiod = 2*53.45;
+Lmagnet = 3.1;
+f = 38;
+k = 1/(f*Lmagnet);
+FODOTHIN : SEQUENCE, L=Lperiod;
+  Q1F : MULTIPOLE, at=0,         KNL := {0, k*Lmagnet/2};
+  Q2D : MULTIPOLE, at=Lperiod/2, KNL := {0, -k*Lmagnet};
+  Q3F : MULTIPOLE, at=Lperiod,   KNL := {0, k*Lmagnet/2};
+ENDSEQUENCE;
+!
+BEAM, PARTICLE=proton, PC=450;
+USE, SEQUENCE=FODOTHIN;

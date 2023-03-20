@@ -1,0 +1,59 @@
+@ NAME             %05s "TWISS"
+@ TYPE             %05s "TWISS"
+@ SEQUENCE         %08s "FODOTHIN"
+@ PARTICLE         %06s "PROTON"
+@ MASS             %le        0.9382720882
+@ CHARGE           %le                   1
+@ ENERGY           %le                7000
+@ PC               %le         6999.999937
+@ GAMMA            %le         7460.522474
+@ KBUNCH           %le                   1
+@ BCURRENT         %le     4.493175516e-13
+@ SIGE             %le               0.001
+@ SIGT             %le                   1
+@ NPART            %le                   1
+@ EX               %le                   1
+@ EY               %le                   1
+@ ET               %le               0.001
+@ BV_FLAG          %le                   1
+@ LENGTH           %le               106.9
+@ ALFA             %le                   0
+@ ORBIT5           %le                  -0
+@ GAMMATR          %le                   0
+@ Q1               %le        0.2482862131
+@ Q2               %le        0.2482862131
+@ DQ1              %le       -0.3149006378
+@ DQ2              %le       -0.3149006378
+@ DXMAX            %le                   0
+@ DYMAX            %le                  -0
+@ XCOMAX           %le                   0
+@ YCOMAX           %le                   0
+@ BETXMAX          %le         182.0922015
+@ BETYMAX          %le         182.0922015
+@ XCORMS           %le                   0
+@ YCORMS           %le                   0
+@ DXRMS            %le                   0
+@ DYRMS            %le                   0
+@ DELTAP           %le                   0
+@ SYNCH_1          %le                   0
+@ SYNCH_2          %le                   0
+@ SYNCH_3          %le                   0
+@ SYNCH_4          %le                   0
+@ SYNCH_5          %le                   0
+@ SYNCH_6          %le                   0
+@ SYNCH_8          %le                   0
+@ DQMIN            %le                   0
+@ DQMIN_PHASE      %le                   0
+@ TITLE            %08s "no-title"
+@ ORIGIN           %17s "5.08.00 Darwin 64"
+@ DATE             %08s "17/03/22"
+@ TIME             %08s "11.18.57"
+* NAME               KEYWORD                             S                  L               BETX               ALFX               BETY               ALFY 
+$ %s                 %s                                %le                %le                %le                %le                %le                %le 
+ "FODOTHIN$START"    "MARKER"                             0                  0        182.0922015    1.292443919e-16        31.72019423   -1.517971046e-16
+ "Q1F"               "MULTIPOLE"                          0                  0        182.0922015         2.39595002        31.72019423      -0.4173709768
+ "DRIFT_0"           "DRIFT"                          53.45              53.45        31.72019423       0.4173709768        182.0922015        -2.39595002
+ "Q2D"               "MULTIPOLE"                      53.45                  0        31.72019423      -0.4173709768        182.0922015         2.39595002
+ "DRIFT_1"           "DRIFT"                          106.9              53.45        182.0922015        -2.39595002        31.72019423       0.4173709768
+ "Q3F"               "MULTIPOLE"                      106.9                  0        182.0922015                 -0        31.72019423    3.330669074e-16
+ "FODOTHIN$END"      "MARKER"                         106.9                  0        182.0922015                 -0        31.72019423    3.330669074e-16

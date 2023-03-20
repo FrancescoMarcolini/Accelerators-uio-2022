@@ -1,0 +1,16 @@
+! Basic MAD-X commands
+! K. Sjobak, Feb. 2022
+
+!Define a variable:
+xvar = 5;
+!Display the current value:
+value, xvar;
+
+!Define a deferred expression:
+yvar := 10*zvar;
+value, yvar;
+zvar = 10;
+value, yvar;
+
+!Get out:
+exit;

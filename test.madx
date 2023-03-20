@@ -1,0 +1,3 @@
+Xvar =5;
+Yvar=2*Xvar;
+value, Xvar, Yvar;

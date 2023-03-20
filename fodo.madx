@@ -1,0 +1,27 @@
+Lhalfperiod=53.45;
+Lmagnet=3.1;
+f=38;
+k:=1/(f*Lmagnet);
+F : MULTIPOLE,  KNL:={0, k*Lmagnet/2}; !half of a focusing magnet
+D: MULTIPOLE, KNL:={0, -k*Lmagnet}; !full defocusing
+
+FODOTHIN: sequence, L:=2*Lhalfperiod, REFER=centre;
+Q1F: F, at= 0;
+Q2D: D, at= Lhalfperiod ;
+Q3F: F, at=2*Lhalfperiod;
+ENDSEQUENCE;
+
+BEAM, PARTICLE=PROTON, ENERGY=7e3;!GeV
+USE, SEQUENCE=FODOTHIN;
+
+SELECT, FLAG=twiss, CLEAR;
+SELECT, FLAG=twiss, COLUMN=NAME,KEYWORD,S,L,BETX,ALFX,BETY,ALFY;
+
+TWISS,  FILE="fodoThin.tfs";
+
+PLOT, TABLE=twiss, Haxis=s, vaxis1=betx,bety, Interpolate=true, colour=100;
+PLOT, table=twiss, haxis=s, vaxis1=alfx,alfy, interpolate=true, colour=100;
+
+SELECT, FLAG=twiss, CLEAR;
+SELECT, FLAG=twiss, RANGE=#S, COLUMN=NAME,RE;
+TWISS, RMATRIX=true, FILE="fodothinre.tfs";

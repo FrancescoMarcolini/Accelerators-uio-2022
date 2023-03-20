@@ -1,0 +1,21 @@
+Lhalfperiod=53.45;
+Lmagnet=3.1;
+f=38;
+k:=1/(f*Lmagnet);
+F : MULTIPOLE,  KNL:={0, k*Lmagnet/2}; !half of a focusing magnet
+D: MULTIPOLE, KNL:={0, -k*Lmagnet}; !full defocusing
+
+FODOTHIN: sequence, L:=2*Lhalfperiod, REFER=centre;
+Q1F: F, at= 0;
+Q2D: D, at= Lhalfperiod ;
+Q3F: F, at=2*Lhalfperiod;
+ENDSEQUENCE;
+
+BEAM, PARTICLE=PROTON, ENERGY=7e3;!GeV
+USE, SEQUENCE=FODOTHIN;
+
+!Tracking
+TRACK, FILE=fodothintrack_90.tfs;
+START, x=1e-3, PX=0.0;
+RUN, TURNS=8;
+ENDTRACK;

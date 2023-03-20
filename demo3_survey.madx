@@ -1,0 +1,9 @@
+! Using SURVEY to look at the sequence
+! K. Sjobak, Feb. 2022
+
+! First run the commands in the demo2 file
+! to define and USE a SEQUENCE
+CALL, FILE='demo2_sequence.madx';
+
+! By default, SURVEY acts on the last USE'd SEQUENCE.
+SURVEY, FILE='demo3-surveyOutput.tfs';
